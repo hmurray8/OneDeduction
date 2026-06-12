@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="One Deduction connects Australians with expert registered tax professionals to maximise their refund. Free referral service. Takes under 2 minutes.">
+  <meta name="theme-color" content="#0F172A">
+  <title>One Deduction | Maximise Your Tax Return</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy:  { DEFAULT: '#0F172A', light: '#1E293B', mid: '#162032', deep: '#0A1628' },
+            brand: { DEFAULT: '#00D9FF', dark: '#0099BB' },
+          },
+          boxShadow: {
+            'card':       '0 4px 24px rgba(15,23,42,0.08)',
+            'card-hover': '0 8px 40px rgba(15,23,42,0.16)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0F172A; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,217,255,0.35); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,217,255,0.6); }
+
+    /* ── Scroll-in animations ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.d1 { transition-delay: 0.10s; }
+    .reveal.d2 { transition-delay: 0.20s; }
+    .reveal.d3 { transition-delay: 0.30s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Gradient text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #00D9FF 0%, #0099BB 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Header ── */
+    #site-header { transition: background 0.3s, box-shadow 0.3s; }
+    #site-header.scrolled { background: rgba(255,255,255,0.97) !important; box-shadow: 0 1px 24px rgba(15,23,42,0.09); }
+
+    /* ── Hero glow ── */
+    .hero-glow {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 60%; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(0,217,255,0.09) 0%, transparent 70%);
+    }
+
+    /* ── Floating cards ── */
+    @keyframes float-up   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes float-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px);  } }
+    .float-a { animation: float-up   4.5s ease-in-out infinite; }
+    .float-b { animation: float-down 4.5s ease-in-out 1.2s infinite; }
+
+    /* ── Pulse dot ── */
+    @keyframes pdot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .pulse-dot { animation: pdot 2s ease-in-out infinite; }
+
+    /* ── Step connector ── */
+    .step-line { background: linear-gradient(90deg, transparent, rgba(0,217,255,0.5), transparent); }
+
+    /* ── Benefit card ── */
+    .benefit-card {
+      border: 2px solid transparent;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s, transform 0.25s;
+    }
+    .benefit-card:hover {
+      border-color: #00D9FF;
+      background: #fff;
+      box-shadow: 0 8px 40px rgba(15,23,42,0.16);
+      transform: translateY(-2px);
+    }
+
+    /* ── Testimonial card ── */
+    .testimonial-card { transition: box-shadow 0.25s, transform 0.25s; }
+    .testimonial-card:hover { box-shadow: 0 8px 40px rgba(15,23,42,0.16); transform: translateY(-3px); }
+
+    /* ── Form inputs ── */
+    .f-input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .f-input::placeholder { color: #475569; }
+    .f-input:focus { border-color: #00D9FF; box-shadow: 0 0 0 3px rgba(0,217,255,0.12); }
+    .f-input option { background: #0F172A; }
+
+    /* ── Option cards (employment / income) ── */
+    .opt-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .opt-card:hover { border-color: rgba(0,217,255,0.4); }
+    .opt-card.selected { border-color: #00D9FF; background: rgba(0,217,255,0.08); }
+
+    /* ── FAQ accordion (CSS grid trick for smooth height) ── */
+    .faq-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s ease;
+    }
+    .faq-body.open { grid-template-rows: 1fr; }
+    .faq-inner { overflow: hidden; }
+    .faq-icon { transition: transform 0.3s ease, color 0.2s; }
+    .faq-body.open + * .faq-icon,
+    .faq-open .faq-icon { transform: rotate(45deg); color: #00D9FF; }
+
+    /* ── CTA button ── */
+    .btn-cta {
+      background: #00D9FF; color: #0F172A; font-weight: 700;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .btn-cta:hover { box-shadow: 0 0 32px rgba(0,217,255,0.4); transform: translateY(-2px); }
+
+    /* ── Progress bar ── */
+    #prog-bar { transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+
+    /* ── Logo sizes ── */
+    .logo-img { height: 38px; width: auto; }
+    .logo-footer { height: 32px; width: auto; }
+
+    /* ── Social icon hover ── */
+    .soc-icon { transition: transform 0.2s, opacity 0.2s; }
+    .soc-icon:hover { transform: scale(1.15); opacity: 1 !important; }
+  </style>
+</head>
+
+<body class="font-sans bg-white text-navy antialiased overflow-x-hidden">
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STICKY HEADER                          ║
+     ╚══════════════════════════════════════════╝ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <a href="#" class="flex-shrink-0" aria-label="One Deduction – Home">
+        <img src="logo.png" alt="One Deduction" class="logo-img">
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+        <a href="#how-it-works" class="text-sm font-medium text-slate-500 hover:text-navy transition-colors">How It Works</a>
+        <a href="#benefits"     class="text-sm font-medium text-slate-500 hover:text-navy transition-colors">Benefits</a>
+        <a href="#about"        class="text-sm font-medium text-slate-500 hover:text-navy transition-colors">About Us</a>
+        <a href="#faq"          class="text-sm font-medium text-slate-500 hover:text-navy transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#lead-form" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg btn-cta text-sm">
+          Get Started <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+        <button id="mob-btn" class="lg:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mob-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pb-5 pt-2">
+    <nav class="flex flex-col gap-1">
+      <a href="#how-it-works" class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">How It Works</a>
+      <a href="#benefits"     class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">Benefits</a>
+      <a href="#about"        class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">About Us</a>
+      <a href="#faq"          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">FAQ</a>
+      <a href="#lead-form"    class="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-lg btn-cta text-sm">
+        Get Started <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  HERO                                   ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="hero" class="relative pt-16" style="background:#0F172A; min-height: 680px;">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 py-20 lg:py-0 lg:min-h-[680px]">
+
+      <!-- Left -->
+      <div class="flex-1 text-white text-center lg:text-left reveal">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-6 tracking-wider uppercase"
+             style="border:1px solid rgba(0,217,255,0.3); background:rgba(0,217,255,0.08); color:#00D9FF;">
+          <span class="w-1.5 h-1.5 rounded-full pulse-dot" style="background:#00D9FF;"></span>
+          Australia's Trusted Tax Referral Service
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+          Maximise Your<br class="hidden sm:block">
+          <span class="gradient-text">Tax Return</span><br class="hidden sm:block">
+          Without The Hassle.
+        </h1>
+
+        <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+          We connect you with expert Australian tax professionals to ensure you get every cent you deserve — in under 2 minutes.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+          <a href="#lead-form"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl btn-cta text-base"
+             style="box-shadow: 0 0 30px rgba(0,217,255,0.3);">
+            Get Connected <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#how-it-works"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-semibold text-base transition-all duration-200 hover:bg-white/10"
+             style="border:1px solid rgba(255,255,255,0.2);">
+            <i class="fa-solid fa-play text-xs" style="color:#00D9FF;"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: hero image + floating cards -->
+      <div class="flex-1 w-full hidden lg:block">
+        <div class="relative rounded-2xl overflow-hidden h-[520px]" style="box-shadow:0 0 60px rgba(0,217,255,0.12);">
+          <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_04f0ecd289_4b8c34069dafa7bf.png"
+               alt="Professional reviewing tax documents on a laptop"
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 rounded-2xl"
+               style="background:linear-gradient(135deg,rgba(15,23,42,0.35) 0%,transparent 55%);"></div>
+
+          <!-- Average Return card -->
+          <div class="float-a absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-xl p-4 shadow-2xl flex items-center gap-3 max-w-xs">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(0,217,255,0.15);">
+              <i class="fa-solid fa-dollar-sign" style="color:#00D9FF;"></i>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium">Average Return</p>
+              <p class="text-xl font-extrabold text-navy">$3,850 <span class="text-sm font-semibold text-emerald-500">↑ 24%</span></p>
+            </div>
+          </div>
+
+          <!-- ATO badge -->
+          <div class="float-b absolute top-6 right-6 bg-white/95 backdrop-blur rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-sm" style="color:#00D9FF;"></i>
+            <span class="text-xs font-semibold text-navy">ATO Registered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  TRUST BAR                              ║
+     ╚══════════════════════════════════════════╝ -->
+<div style="background:#162032; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+      <div class="flex items-center gap-4 justify-center sm:justify-start group reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+             style="background:rgba(0,217,255,0.1); border:1px solid rgba(0,217,255,0.2);">
+          <i class="fa-solid fa-lock text-lg" style="color:#00D9FF;"></i>
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm">256-bit Encrypted</p>
+          <p class="text-slate-400 text-xs mt-0.5">Bank-grade data security</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 justify-center group reveal d1"
+           style="border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08); padding:0 1.5rem;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+             style="background:rgba(0,217,255,0.1); border:1px solid rgba(0,217,255,0.2);">
+          <i class="fa-solid fa-user-tie text-lg" style="color:#00D9FF;"></i>
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm">Registered AU Pros</p>
+          <p class="text-slate-400 text-xs mt-0.5">CPA &amp; Tax Agent certified</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 justify-center sm:justify-end group reveal d2">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+             style="background:rgba(0,217,255,0.1); border:1px solid rgba(0,217,255,0.2);">
+          <i class="fa-solid fa-bolt text-lg" style="color:#00D9FF;"></i>
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm">2-Minute Process</p>
+          <p class="text-slate-400 text-xs mt-0.5">Fast, no-obligation matching</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  HOW IT WORKS                           ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="how-it-works" class="py-20 lg:py-28 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#00D9FF;">Simple Process</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight mb-4">How It Works</h2>
+      <p class="text-slate-500 text-lg max-w-2xl mx-auto">Three steps to connect with your ideal tax professional and maximise your return.</p>
+    </div>
+
+    <div class="relative">
+      <!-- Desktop connector line -->
+      <div class="hidden lg:block absolute top-16 left-1/4 right-1/4 h-px step-line" style="left:16.67%; right:16.67%;"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Step 1 -->
+        <div class="relative bg-white rounded-2xl p-8 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 group reveal">
+          <div class="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold text-navy"
+               style="background:#00D9FF;">1</div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+               style="background:linear-gradient(135deg,rgba(0,217,255,0.14),rgba(0,217,255,0.04));">
+            <i class="fa-solid fa-file-lines text-2xl" style="color:#00D9FF;"></i>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">Complete Your Form</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Fill in your basic employment and income details in under 2 minutes. No tax knowledge required — we guide every step.</p>
+          <div class="mt-6 flex items-center gap-2 text-xs font-semibold" style="color:#00D9FF;">
+            <span>Takes under 2 minutes</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative bg-white rounded-2xl p-8 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 group reveal d1">
+          <div class="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold text-navy"
+               style="background:#00D9FF;">2</div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+               style="background:linear-gradient(135deg,rgba(0,217,255,0.14),rgba(0,217,255,0.04));">
+            <i class="fa-solid fa-magnifying-glass-chart text-2xl" style="color:#00D9FF;"></i>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">We Review &amp; Match</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Our system analyses your profile and matches you with the right registered tax professionals from our vetted Australian network.</p>
+          <div class="mt-6 flex items-center gap-2 text-xs font-semibold" style="color:#00D9FF;">
+            <span>Smart matching algorithm</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative bg-white rounded-2xl p-8 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 group reveal d2">
+          <div class="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold text-navy"
+               style="background:#00D9FF;">3</div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+               style="background:linear-gradient(135deg,rgba(0,217,255,0.14),rgba(0,217,255,0.04));">
+            <i class="fa-solid fa-handshake text-2xl" style="color:#00D9FF;"></i>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">Connect &amp; Maximise</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Get connected with your matched tax agent who handles everything, ensuring you receive the maximum refund you're legally entitled to.</p>
+          <div class="mt-6 flex items-center gap-2 text-xs font-semibold" style="color:#00D9FF;">
+            <span>Maximise every deduction</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  BENEFITS                               ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="benefits" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#00D9FF;">Why Choose Us</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight mb-4">Benefits That Set Us Apart</h2>
+      <p class="text-slate-500 text-lg max-w-2xl mx-auto">Purpose-built for Australians who want results, not complexity.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+      <div class="benefit-card p-8 rounded-2xl bg-slate-50 cursor-default reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+             style="background:linear-gradient(135deg,rgba(0,217,255,0.15),rgba(0,217,255,0.04));">
+          <i class="fa-solid fa-shield-halved text-xl" style="color:#00D9FF;"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">No Risk, No Obligation</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Our referral service is completely free to use. You only engage a professional when you're fully satisfied. Zero pressure, zero cost upfront.</p>
+      </div>
+
+      <div class="benefit-card p-8 rounded-2xl bg-slate-50 cursor-default reveal d1">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+             style="background:linear-gradient(135deg,rgba(0,217,255,0.15),rgba(0,217,255,0.04));">
+          <i class="fa-solid fa-users text-xl" style="color:#00D9FF;"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Vetted Australian Experts</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Every professional in our network holds current ATO registrations, CPA qualifications, and a verified track record with thousands of satisfied clients.</p>
+      </div>
+
+      <div class="benefit-card p-8 rounded-2xl bg-slate-50 cursor-default reveal d2">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+             style="background:linear-gradient(135deg,rgba(0,217,255,0.15),rgba(0,217,255,0.04));">
+          <i class="fa-solid fa-chart-line text-xl" style="color:#00D9FF;"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Maximised Returns</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Our network agents average $3,850 in returns per client — 24% higher than self-lodgment — by identifying deductions most Australians overlook.</p>
+      </div>
+
+      <div class="benefit-card p-8 rounded-2xl bg-slate-50 cursor-default reveal d3">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+             style="background:linear-gradient(135deg,rgba(0,217,255,0.15),rgba(0,217,255,0.04));">
+          <i class="fa-solid fa-lock text-xl" style="color:#00D9FF;"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Private &amp; Secure</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Your personal and financial data is protected by 256-bit encryption and is never sold or shared beyond your matched professional. Full Privacy Act compliance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  ABOUT                                  ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="about" class="py-20 lg:py-28" style="background:#0F172A;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+      <!-- Image with stats -->
+      <div class="w-full lg:w-2/5 flex-shrink-0 reveal">
+        <div class="relative rounded-2xl overflow-hidden h-80 lg:h-[480px]">
+          <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_da8bd3bf18_c6753773b1793826.png"
+               alt="Professional Australian team in a modern Sydney office"
+               class="w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(15,23,42,0.75) 0%,transparent 55%);"></div>
+
+          <!-- Stats overlay -->
+          <div class="absolute bottom-6 left-6 right-6">
+            <div class="flex gap-6">
+              <div class="text-center">
+                <p class="text-3xl font-extrabold stat-num" data-target="12" data-suffix="K+" style="color:#00D9FF;">12K+</p>
+                <p class="text-xs text-slate-300 mt-1">Clients Helped</p>
+              </div>
+              <div class="w-px self-stretch" style="background:rgba(255,255,255,0.2);"></div>
+              <div class="text-center">
+                <p class="text-3xl font-extrabold stat-num" data-target="98" data-suffix="%" style="color:#00D9FF;">98%</p>
+                <p class="text-xs text-slate-300 mt-1">Satisfaction Rate</p>
+              </div>
+              <div class="w-px self-stretch" style="background:rgba(255,255,255,0.2);"></div>
+              <div class="text-center">
+                <p class="text-3xl font-extrabold stat-num" data-target="500" data-suffix="+" style="color:#00D9FF;">500+</p>
+                <p class="text-xs text-slate-300 mt-1">Tax Agents</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="flex-1 text-white reveal d2">
+        <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#00D9FF;">About One Deduction</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+          Built for Every<br>Working Australian.
+        </h2>
+        <div class="space-y-4 text-slate-400 leading-relaxed">
+          <p>One Deduction was founded on a simple belief: every Australian deserves access to expert tax advice — not just those who can afford a private accountant. We saw too many hard-working people leave money on the table simply because navigating the tax system felt overwhelming.</p>
+          <p>We built a referral platform that removes all friction. By partnering with over 500 ATO-registered tax agents and CPAs across Australia, we've created a seamless matching system that connects you with the right expert for your specific situation — in under 2 minutes.</p>
+          <p>From PAYG employees to sole traders, from first-time lodgers to those with complex investment portfolios — our network covers every scenario, ensuring no deduction goes unclaimed.</p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,217,255,0.15);">
+              <i class="fa-solid fa-check text-xs" style="color:#00D9FF;"></i>
+            </div>
+            <p class="text-sm text-slate-300">ATO Registered network professionals</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,217,255,0.15);">
+              <i class="fa-solid fa-check text-xs" style="color:#00D9FF;"></i>
+            </div>
+            <p class="text-sm text-slate-300">Privacy Act compliant data handling</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,217,255,0.15);">
+              <i class="fa-solid fa-check text-xs" style="color:#00D9FF;"></i>
+            </div>
+            <p class="text-sm text-slate-300">100% free referral service</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,217,255,0.15);">
+              <i class="fa-solid fa-check text-xs" style="color:#00D9FF;"></i>
+            </div>
+            <p class="text-sm text-slate-300">Coverage across all states &amp; territories</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  TESTIMONIALS                           ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="testimonials" class="py-20 lg:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#00D9FF;">Client Stories</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">Real Australians, Real Results</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="testimonial-card bg-white rounded-2xl p-7 shadow-card reveal">
+        <div class="flex items-center gap-0.5 mb-4">
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6">"I never knew I could claim so much as a nurse. One Deduction matched me with an agent who found $4,200 in deductions I would have missed entirely. The process took literally 5 minutes."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold">SM</span>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-navy">Sarah M.</p>
+            <p class="text-xs text-slate-400">Registered Nurse, Melbourne</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-white rounded-2xl p-7 shadow-card reveal d1">
+        <div class="flex items-center gap-0.5 mb-4">
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6">"As a tradie, my tax situation is complicated. The agent One Deduction connected me with was a specialist in my industry. Got $5,600 back — best return I've ever had. Highly recommend."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold">JT</span>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-navy">Jason T.</p>
+            <p class="text-xs text-slate-400">Electrician, Brisbane</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-white rounded-2xl p-7 shadow-card reveal d2">
+        <div class="flex items-center gap-0.5 mb-4">
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+          <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6">"I work from home and have investments — it's always been a nightmare. One Deduction found me a tax agent who handled everything seamlessly. Saved me weeks of stress and got a great return."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold">PL</span>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-navy">Priya L.</p>
+            <p class="text-xs text-slate-400">Marketing Manager, Sydney</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LEAD CAPTURE FORM                      ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="lead-form" class="py-20 lg:py-28" style="background:#0F172A;">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#00D9FF;">Free &amp; No Obligation</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">Claim Your Maximum Refund</h2>
+      <p class="text-slate-400 text-base">Complete your profile in under 2 minutes. We'll match you instantly.</p>
+    </div>
+
+    <div class="rounded-2xl p-8 lg:p-10 reveal d1"
+         style="background:#162032; border:1px solid rgba(0,217,255,0.15);">
+
+      <!-- Progress -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-semibold text-slate-400">Step <span id="step-label">1</span> of 4</span>
+          <span id="prog-label" class="text-xs font-semibold" style="color:#00D9FF;">25% complete</span>
+        </div>
+        <div class="w-full h-1.5 rounded-full overflow-hidden" style="background:#0F172A;">
+          <div id="prog-bar" class="h-full rounded-full" style="width:25%; background:linear-gradient(90deg,#00D9FF,#0099BB);"></div>
+        </div>
+      </div>
+
+      <!-- ── Step 1: Details ── -->
+      <div id="step-1" class="form-step">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-user text-sm" style="color:#00D9FF;"></i> Your Details
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">First Name</label>
+            <input type="text" placeholder="e.g. Sarah" class="f-input w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Last Name</label>
+            <input type="text" placeholder="e.g. Thompson" class="f-input w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Email Address</label>
+            <input type="email" placeholder="sarah@example.com.au" class="f-input w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Phone Number</label>
+            <input type="tel" placeholder="04XX XXX XXX" class="f-input w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+        </div>
+        <button onclick="goStep(2)" class="mt-8 w-full py-4 rounded-xl btn-cta text-sm flex items-center justify-center gap-2">
+          Continue <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- ── Step 2: Employment ── -->
+      <div id="step-2" class="form-step hidden">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-briefcase text-sm" style="color:#00D9FF;"></i> Employment Type
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="employment" value="payg" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,217,255,0.1);">
+              <i class="fa-solid fa-id-badge" style="color:#00D9FF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">PAYG Employee</p>
+              <p class="text-xs text-slate-400 mt-0.5">Full-time, part-time, casual</p>
+            </div>
+          </label>
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="employment" value="sole-trader" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,217,255,0.1);">
+              <i class="fa-solid fa-store" style="color:#00D9FF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">Sole Trader / ABN</p>
+              <p class="text-xs text-slate-400 mt-0.5">Self-employed, contractor</p>
+            </div>
+          </label>
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="employment" value="investor" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,217,255,0.1);">
+              <i class="fa-solid fa-chart-pie" style="color:#00D9FF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">Investor</p>
+              <p class="text-xs text-slate-400 mt-0.5">Property, shares, crypto</p>
+            </div>
+          </label>
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="employment" value="multiple" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,217,255,0.1);">
+              <i class="fa-solid fa-layer-group" style="color:#00D9FF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">Multiple / Complex</p>
+              <p class="text-xs text-slate-400 mt-0.5">Combined income sources</p>
+            </div>
+          </label>
+        </div>
+        <div class="flex gap-4 mt-8">
+          <button onclick="goStep(1)" class="flex-shrink-0 px-6 py-4 rounded-xl font-semibold text-slate-300 text-sm hover:bg-white/5 transition flex items-center gap-2" style="border:1px solid rgba(255,255,255,0.15);">
+            <i class="fa-solid fa-arrow-left text-xs"></i> Back
+          </button>
+          <button onclick="goStep(3)" class="flex-1 py-4 rounded-xl btn-cta text-sm flex items-center justify-center gap-2">
+            Continue <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Step 3: Income ── -->
+      <div id="step-3" class="form-step hidden">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-dollar-sign text-sm" style="color:#00D9FF;"></i> Annual Income
+        </h3>
+        <div class="space-y-3">
+          <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="income" value="under-40k" class="hidden">
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,217,255,0.45);"></div>
+            <p class="text-sm font-medium text-white">Under $40,000</p>
+          </label>
+          <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="income" value="40-80k" class="hidden">
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,217,255,0.45);"></div>
+            <p class="text-sm font-medium text-white">$40,000 – $80,000</p>
+          </label>
+          <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="income" value="80-150k" class="hidden">
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,217,255,0.45);"></div>
+            <p class="text-sm font-medium text-white">$80,000 – $150,000</p>
+          </label>
+          <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="radio" name="income" value="150k-plus" class="hidden">
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,217,255,0.45);"></div>
+            <p class="text-sm font-medium text-white">$150,000+</p>
+          </label>
+        </div>
+        <div class="flex gap-4 mt-8">
+          <button onclick="goStep(2)" class="flex-shrink-0 px-6 py-4 rounded-xl font-semibold text-slate-300 text-sm hover:bg-white/5 transition flex items-center gap-2" style="border:1px solid rgba(255,255,255,0.15);">
+            <i class="fa-solid fa-arrow-left text-xs"></i> Back
+          </button>
+          <button onclick="goStep(4)" class="flex-1 py-4 rounded-xl btn-cta text-sm flex items-center justify-center gap-2">
+            Continue <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Step 4: Final ── -->
+      <div id="step-4" class="form-step hidden">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-map-marker-alt text-sm" style="color:#00D9FF;"></i> Final Details
+        </h3>
+        <div class="space-y-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">State / Territory</label>
+            <select class="f-input w-full px-4 py-3 rounded-xl text-sm appearance-none">
+              <option value="" style="color:#475569;">Select your state…</option>
+              <option>New South Wales</option>
+              <option>Victoria</option>
+              <option>Queensland</option>
+              <option>Western Australia</option>
+              <option>South Australia</option>
+              <option>Tasmania</option>
+              <option>ACT</option>
+              <option>Northern Territory</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Financial Year</label>
+            <select class="f-input w-full px-4 py-3 rounded-xl text-sm appearance-none">
+              <option>FY 2025–26 (Current)</option>
+              <option>FY 2024–25</option>
+              <option>All</option>
+            </select>
+          </div>
+          <div class="rounded-xl p-4 flex items-start gap-3" style="background:rgba(0,217,255,0.07); border:1px solid rgba(0,217,255,0.18);">
+            <i class="fa-solid fa-shield-halved mt-0.5 flex-shrink-0" style="color:#00D9FF;"></i>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              By submitting, you agree to our <span class="underline cursor-pointer" style="color:#00D9FF;">Privacy Policy</span> and <span class="underline cursor-pointer" style="color:#00D9FF;">Terms of Service</span>. Your data is encrypted and protected under the Australian Privacy Act 1988.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 mt-8">
+          <button onclick="goStep(3)" class="flex-shrink-0 px-6 py-4 rounded-xl font-semibold text-slate-300 text-sm hover:bg-white/5 transition flex items-center gap-2" style="border:1px solid rgba(255,255,255,0.15);">
+            <i class="fa-solid fa-arrow-left text-xs"></i> Back
+          </button>
+          <button onclick="submitForm()" class="flex-1 py-4 rounded-xl btn-cta text-sm flex items-center justify-center gap-2">
+            Match Me With an Expert <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Success ── -->
+      <div id="step-success" class="form-step hidden text-center py-8">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+             style="background:rgba(0,217,255,0.1); border:2px solid rgba(0,217,255,0.35);">
+          <i class="fa-solid fa-check text-3xl" style="color:#00D9FF;"></i>
+        </div>
+        <h3 class="text-2xl font-extrabold text-white mb-3">You're All Set!</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm mx-auto">
+          We've received your details and will match you with the ideal tax professional within the next <strong class="text-white">2 business hours</strong>. Check your inbox for confirmation.
+        </p>
+        <div class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full"
+             style="background:rgba(0,217,255,0.1); color:#00D9FF; border:1px solid rgba(0,217,255,0.2);">
+          <i class="fa-solid fa-envelope"></i> Confirmation email sent
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  FAQ                                    ║
+     ╚══════════════════════════════════════════╝ -->
+<section id="faq" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-14 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#00D9FF;">Got Questions?</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-2 reveal d1">
+
+      <div class="faq-item rounded-xl overflow-hidden border border-slate-200">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-navy text-sm pr-4">Is the One Deduction service actually free?</span>
+          <i class="fa-solid fa-plus faq-icon text-slate-400 text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body">
+          <div class="faq-inner px-6 pb-6">
+            <p class="text-slate-500 text-sm leading-relaxed">Yes, completely. One Deduction is a referral service. We connect you with tax professionals at no cost to you. The tax agent you choose will outline their own fees directly, but you are under no obligation to engage anyone.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-xl overflow-hidden border border-slate-200">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-navy text-sm pr-4">How are tax professionals vetted?</span>
+          <i class="fa-solid fa-plus faq-icon text-slate-400 text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body">
+          <div class="faq-inner px-6 pb-6">
+            <p class="text-slate-500 text-sm leading-relaxed">Every professional in our network is independently verified to hold a current ATO Tax Agent registration or CPA Australia membership. We also review client satisfaction scores and professional indemnity insurance before onboarding.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-xl overflow-hidden border border-slate-200">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-navy text-sm pr-4">How secure is my personal and financial information?</span>
+          <i class="fa-solid fa-plus faq-icon text-slate-400 text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body">
+          <div class="faq-inner px-6 pb-6">
+            <p class="text-slate-500 text-sm leading-relaxed">Your data is protected by 256-bit TLS encryption in transit and AES-256 encryption at rest. We operate in full compliance with the Australian Privacy Act 1988 and never sell or share your data with third parties outside your matched professional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-xl overflow-hidden border border-slate-200">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-navy text-sm pr-4">Can I use One Deduction for previous financial years?</span>
+          <i class="fa-solid fa-plus faq-icon text-slate-400 text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body">
+          <div class="faq-inner px-6 pb-6">
+            <p class="text-slate-500 text-sm leading-relaxed">Absolutely. The ATO allows amendments to returns for up to 2 years from the original lodgement date, and our network of professionals is experienced in lodging prior-year returns and amendments. Simply select the relevant financial year in the form.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-xl overflow-hidden border border-slate-200">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-navy text-sm pr-4">How quickly will I be matched with a professional?</span>
+          <i class="fa-solid fa-plus faq-icon text-slate-400 text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body">
+          <div class="faq-inner px-6 pb-6">
+            <p class="text-slate-500 text-sm leading-relaxed">Our matching system is automated and typically generates your best-fit referrals within minutes of submission. You'll receive a confirmation email immediately, followed by an introduction to your matched professional within 2 business hours during peak season.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  CTA BANNER                             ║
+     ╚══════════════════════════════════════════╝ -->
+<section class="py-16 lg:py-20" style="background:#0F172A;">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative rounded-2xl p-10 lg:p-16 text-center overflow-hidden reveal"
+         style="background:linear-gradient(135deg,#162032,#0F172A); border:1px solid rgba(0,217,255,0.22); box-shadow:0 0 60px rgba(0,217,255,0.08);">
+
+      <!-- top glow line -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px"
+           style="background:linear-gradient(90deg,transparent,#00D9FF,transparent);" aria-hidden="true"></div>
+
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#00D9FF;">Ready to Start?</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5">Don't Leave Money on the Table.</h2>
+      <p class="text-slate-400 text-lg mb-8 max-w-xl mx-auto">Join over 12,000 Australians who've already maximised their refund with One Deduction. Takes 2 minutes. Free forever.</p>
+      <a href="#lead-form" class="inline-flex items-center gap-2.5 px-10 py-4 rounded-xl btn-cta text-base"
+         style="box-shadow:0 0 30px rgba(0,217,255,0.28);">
+        Get My Free Match <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  FOOTER                                 ║
+     ╚══════════════════════════════════════════╝ -->
+<footer style="background:#0A1628;" class="py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <a href="#" class="inline-block mb-5" aria-label="One Deduction">
+          <img src="logo.png" alt="One Deduction" class="logo-footer">
+        </a>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
+          Australia's trusted tax referral service. Connecting Australians with expert tax professionals to maximise every refund.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Facebook" class="soc-icon w-9 h-9 rounded-lg flex items-center justify-center opacity-60"
+             style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);">
+            <i class="fa-brands fa-facebook-f text-white text-sm"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="soc-icon w-9 h-9 rounded-lg flex items-center justify-center opacity-60"
+             style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);">
+            <i class="fa-brands fa-instagram text-white text-sm"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="soc-icon w-9 h-9 rounded-lg flex items-center justify-center opacity-60"
+             style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);">
+            <i class="fa-brands fa-linkedin-in text-white text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-5">Services</p>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-400 text-sm hover:text-white transition-colors">PAYG Returns</a></li>
+          <li><a href="#" class="text-slate-400 text-sm hover:text-white transition-colors">Sole Trader Tax</a></li>
+          <li><a href="#" class="text-slate-400 text-sm hover:text-white transition-colors">Investment Returns</a></li>
+          <li><a href="#" class="text-slate-400 text-sm hover:text-white transition-colors">Prior Year Lodgements</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-5">Company</p>
+        <ul class="space-y-3">
+          <li><a href="#about" class="text-slate-400 text-sm hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#faq"   class="text-slate-400 text-sm hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#"      class="text-slate-400 text-sm hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#"      class="text-slate-400 text-sm hover:text-white transition-colors">Terms of Service</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+         style="border-top:1px solid rgba(255,255,255,0.08);">
+      <p class="text-slate-500 text-xs">© 2025 One Deduction Pty Ltd. All rights reserved. ABN 00 000 000 000.</p>
+      <p class="text-slate-600 text-xs text-center sm:text-right max-w-sm">
+        One Deduction is a referral service only and is not a registered tax agent. Professional tax advice is provided solely by connected registered professionals.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  JAVASCRIPT                             ║
+     ╚══════════════════════════════════════════╝ -->
+<script>
+  /* ── Mobile menu ── */
+  const mobBtn  = document.getElementById('mob-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  mobBtn.addEventListener('click', () => mobMenu.classList.toggle('hidden'));
+  mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobMenu.classList.add('hidden')));
+
+  /* ── Header scroll tint ── */
+  const hdr = document.getElementById('site-header');
+  window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+
+  /* ── Scroll reveal ── */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  /* ── Multi-step form ── */
+  const progMap = { 1: 25, 2: 50, 3: 75, 4: 100 };
+
+  function goStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
+    const el = document.getElementById('step-' + n);
+    if (el) el.classList.remove('hidden');
+    if (progMap[n]) {
+      document.getElementById('prog-bar').style.width   = progMap[n] + '%';
+      document.getElementById('prog-label').textContent = progMap[n] + '% complete';
+      document.getElementById('step-label').textContent = n;
+    }
+  }
+
+  function submitForm() {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
+    document.getElementById('step-success').classList.remove('hidden');
+    document.getElementById('prog-bar').style.width   = '100%';
+    document.getElementById('prog-label').textContent = '100% complete';
+  }
+
+  /* ── Option cards: employment ── */
+  document.querySelectorAll('.employment-opt').forEach(opt => {
+    opt.addEventListener('click', function () {
+      document.querySelectorAll('.employment-opt').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      const r = this.querySelector('input[type="radio"]');
+      if (r) r.checked = true;
+    });
+  });
+
+  /* ── Option cards: income ── */
+  document.querySelectorAll('.income-opt').forEach(opt => {
+    opt.addEventListener('click', function () {
+      document.querySelectorAll('.income-opt').forEach(o => {
+        o.classList.remove('selected');
+        const d = o.querySelector('.radio-dot');
+        if (d) d.style.background = 'transparent';
+      });
+      this.classList.add('selected');
+      const dot = this.querySelector('.radio-dot');
+      if (dot) dot.style.background = '#00D9FF';
+      const r = this.querySelector('input[type="radio"]');
+      if (r) r.checked = true;
+    });
+  });
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const item    = this.parentElement;
+      const body    = item.querySelector('.faq-body');
+      const icon    = this.querySelector('.faq-icon');
+      const wasOpen = body.classList.contains('open');
+
+      /* close all */
+      document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => {
+        i.classList.replace('fa-minus','fa-plus');
+        i.style.color = '';
+        i.style.transform = '';
+      });
+
+      if (!wasOpen) {
+        body.classList.add('open');
+        icon.classList.replace('fa-plus','fa-minus');
+        icon.style.color     = '#00D9FF';
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+
+  /* ── Smooth scroll with header offset ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function (e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        const offset = hdr.offsetHeight + 8;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
