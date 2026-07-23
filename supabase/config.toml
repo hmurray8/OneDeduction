@@ -1,0 +1,3 @@
+[functions.submit-lead]
+# Public marketing form endpoint — no Supabase auth session exists to verify.
+verify_jwt = false
