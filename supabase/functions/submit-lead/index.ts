@@ -1,4 +1,4 @@
-// Receives the One Deduction lead-capture form submission, validates it,
+// Receives the OneDeduction lead-capture form submission, validates it,
 // stores it in Postgres, and emails a notification via Resend.
 //
 // Deploy with JWT verification OFF for this function (it's a public
@@ -112,7 +112,7 @@ Deno.serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "One Deduction Leads <leads@onededuction.com>",
+          from: "OneDeduction Leads <leads@onededuction.com>",
           to: notifyEmail,
           subject: `New lead: ${lead.first_name} ${lead.last_name}`,
           text: [

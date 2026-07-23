@@ -12,7 +12,16 @@
       "Bash(node --check /tmp/claude-1000/-mnt-c-Users-Hayden-Documents-GitHub-onededuction/491bae34-7a19-4cd6-8387-04b77084dcc8/scratchpad/check.js)",
       "Bash(command -v deno)",
       "Bash(deno check *)",
-      "Bash(node --check /tmp/claude-1000/-mnt-c-Users-Hayden-Documents-GitHub-onededuction/491bae34-7a19-4cd6-8387-04b77084dcc8/scratchpad/check2.js)"
+      "Bash(node --check /tmp/claude-1000/-mnt-c-Users-Hayden-Documents-GitHub-onededuction/491bae34-7a19-4cd6-8387-04b77084dcc8/scratchpad/check2.js)",
+      "Bash(command -v convert)",
+      "Bash(command -v magick)",
+      "Bash(command -v ffmpeg)",
+      "Bash(command -v gm)",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(timeout 25 npm install pngjs --no-save --silent)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(cd *)",
+      "Bash(file *.png *.ico *.svg)"
     ]
   }
 }
