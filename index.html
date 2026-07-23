@@ -51,7 +51,7 @@
             paper: { DEFAULT: '#EDF0F5', dim: '#E1E6EF' },
             line:  { DEFAULT: '#D3D9E3', dark: 'rgba(255,255,255,0.10)' },
             muted: { DEFAULT: '#6B7280', light: '#9CA3AF' },
-            brand: { DEFAULT: '#2F5DE3', dark: '#2447B3', light: '#E8EDFC', mid: '#3D6BEF' },
+            brand: { DEFAULT: '#00A1EF', dark: '#0079B3', light: '#E6F6FD', mid: '#40B9F3' },
           },
           boxShadow: {
             'soft':       '0 2px 12px rgba(27,31,39,0.05)',
@@ -75,8 +75,8 @@
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #EDF0F5; }
-    ::-webkit-scrollbar-thumb { background: rgba(47,93,227,0.35); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(47,93,227,0.6); }
+    ::-webkit-scrollbar-thumb { background: rgba(0,161,239,0.35); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,161,239,0.6); }
 
     /* ── Scroll-in animations ── */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -115,7 +115,7 @@
 
     /* ── Testimonial card ── */
     .testimonial-card { transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; }
-    .testimonial-card:hover { box-shadow: 0 12px 32px rgba(27,31,39,0.08); transform: translateY(-3px); border-color: #2F5DE3; }
+    .testimonial-card:hover { box-shadow: 0 12px 32px rgba(27,31,39,0.08); transform: translateY(-3px); border-color: #00A1EF; }
 
     /* ── Form inputs ── */
     .f-input {
@@ -126,7 +126,7 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .f-input::placeholder { color: #9199A6; }
-    .f-input:focus { border-color: #5B82FF; box-shadow: 0 0 0 3px rgba(91,130,255,0.16); }
+    .f-input:focus { border-color: #00A1EF; box-shadow: 0 0 0 3px rgba(0,161,239,0.16); }
     .f-input option { background: #1B1F27; }
 
     /* ── Option cards (employment / income) ── */
@@ -136,8 +136,8 @@
       transition: border-color 0.2s, background 0.2s;
       cursor: pointer;
     }
-    .opt-card:hover { border-color: rgba(91,130,255,0.5); }
-    .opt-card.selected { border-color: #5B82FF; background: rgba(91,130,255,0.08); }
+    .opt-card:hover { border-color: rgba(0,161,239,0.5); }
+    .opt-card.selected { border-color: #00A1EF; background: rgba(0,161,239,0.08); }
 
     /* ── FAQ accordion ── */
     .faq-body {
@@ -151,16 +151,16 @@
 
     /* ── CTA button ── */
     .btn-cta {
-      background: #2F5DE3; color: #fff; font-weight: 600;
-      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: #00A1EF; color: #1B1F27; font-weight: 600;
+      transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .btn-cta:hover { background: #2447B3; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(47,93,227,0.28); }
+    .btn-cta:hover { background: #0079B3; color: #fff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,161,239,0.28); }
 
     .btn-cta-dark {
-      background: #5B82FF; color: #fff; font-weight: 600;
+      background: #00A1EF; color: #1B1F27; font-weight: 600;
       transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .btn-cta-dark:hover { background: #7DA0FF; transform: translateY(-1px); box-shadow: 0 0 28px rgba(91,130,255,0.35); }
+    .btn-cta-dark:hover { background: #40B9F3; transform: translateY(-1px); box-shadow: 0 0 28px rgba(0,161,239,0.35); }
 
     /* ── Progress steps ── */
     .prog-step { transition: background 0.3s, color 0.3s, border-color 0.3s; }
@@ -171,7 +171,7 @@
 
     /* ── Social icon hover ── */
     .soc-icon { transition: transform 0.2s, border-color 0.2s; }
-    .soc-icon:hover { transform: scale(1.08); border-color: rgba(91,130,255,0.5); }
+    .soc-icon:hover { transform: scale(1.08); border-color: rgba(0,161,239,0.5); }
 
     /* ── Eyebrow label ── */
     .eyebrow { letter-spacing: 0.06em; }
@@ -303,8 +303,8 @@
       <!-- Left -->
       <div class="flex-1 text-center lg:text-left reveal">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-7 eyebrow uppercase"
-             style="border:1px solid rgba(91,130,255,0.3); background:rgba(91,130,255,0.08); color:#5B82FF;">
-          <span class="w-1.5 h-1.5 rounded-full" style="background:#5B82FF;"></span>
+             style="border:1px solid rgba(0,161,239,0.3); background:rgba(0,161,239,0.08); color:#00A1EF;">
+          <span class="w-1.5 h-1.5 rounded-full" style="background:#00A1EF;"></span>
           Free · ATO-Registered Network · Australia-Wide
         </div>
 
@@ -319,12 +319,12 @@
         <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
           <a href="#lead-form"
              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl btn-cta text-base"
-             style="box-shadow: 0 0 30px rgba(91,130,255,0.28);">
+             style="box-shadow: 0 0 30px rgba(0,161,239,0.28);">
             Get Matched Free <i class="fa-solid fa-arrow-right"></i>
           </a>
           <a href="#how-it-works"
              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-semibold text-base transition-colors duration-200 hover:bg-white/10 border border-white/20">
-            <i class="fa-solid fa-play text-xs" style="color:#5B82FF;"></i>
+            <i class="fa-solid fa-play text-xs" style="color:#00A1EF;"></i>
             See How It Works
           </a>
         </div>
@@ -341,12 +341,12 @@
 
           <!-- Average refund badge -->
           <div class="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-soft-hover flex items-center gap-3 max-w-xs border border-line">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#E8EDFC;">
-              <i class="fa-solid fa-dollar-sign" style="color:#2F5DE3;"></i>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#E6F6FD;">
+              <i class="fa-solid fa-dollar-sign" style="color:#0079B3;"></i>
             </div>
             <div>
               <p class="text-xs text-muted font-medium">Average client refund</p>
-              <p class="text-xl font-extrabold text-ink">$3,850 <span class="text-sm font-semibold" style="color:#2F5DE3;">↑ 24%</span></p>
+              <p class="text-xl font-extrabold text-ink">$3,850 <span class="text-sm font-semibold" style="color:#0079B3;">↑ 24%</span></p>
             </div>
           </div>
         </div>
@@ -364,17 +364,17 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
       <div class="flex items-center gap-3.5 justify-center sm:justify-start reveal">
-        <i class="fa-solid fa-lock text-base w-9 text-center" style="color:#2F5DE3;"></i>
+        <i class="fa-solid fa-lock text-base w-9 text-center" style="color:#0079B3;"></i>
         <p class="text-sm font-medium text-ink/80">256-bit encrypted, Privacy Act compliant</p>
       </div>
 
       <div class="flex items-center gap-3.5 justify-center reveal d1 sm:border-x sm:border-line">
-        <i class="fa-solid fa-user-tie text-base w-9 text-center" style="color:#2F5DE3;"></i>
+        <i class="fa-solid fa-user-tie text-base w-9 text-center" style="color:#0079B3;"></i>
         <p class="text-sm font-medium text-ink/80">Registered CPAs &amp; ATO tax agents</p>
       </div>
 
       <div class="flex items-center gap-3.5 justify-center sm:justify-end reveal d2">
-        <i class="fa-solid fa-bolt text-base w-9 text-center" style="color:#2F5DE3;"></i>
+        <i class="fa-solid fa-bolt text-base w-9 text-center" style="color:#0079B3;"></i>
         <p class="text-sm font-medium text-ink/80">Under 2 minutes to get matched</p>
       </div>
 
@@ -390,7 +390,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="max-w-2xl mb-16 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#2F5DE3;">How It Works</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#0079B3;">How It Works</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink tracking-tight mb-4">Three steps. Two minutes. Zero guesswork.</h2>
       <p class="text-muted text-lg">We handle the matching so you can skip the research and get straight to your refund.</p>
     </div>
@@ -439,7 +439,7 @@
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-10 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#5B82FF;">Free &amp; No Obligation</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#00A1EF;">Free &amp; No Obligation</p>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">Claim your maximum refund.</h2>
       <p class="text-white/55 text-base">Complete your profile in under 2 minutes. We'll match you instantly.</p>
     </div>
@@ -449,7 +449,7 @@
       <!-- Progress -->
       <div class="mb-9">
         <div class="flex items-center gap-2">
-          <div id="prog-step-1" class="prog-step w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background:#5B82FF; color:#fff;">1</div>
+          <div id="prog-step-1" class="prog-step w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background:#0079B3; color:#fff;">1</div>
           <div class="h-px flex-1" style="background:rgba(255,255,255,0.12);"></div>
           <div id="prog-step-2" class="prog-step w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 border border-white/15 text-white/40">2</div>
           <div class="h-px flex-1" style="background:rgba(255,255,255,0.12);"></div>
@@ -462,7 +462,7 @@
       <!-- ── Step 1: Details ── -->
       <div id="step-1" class="form-step">
         <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-user text-sm" style="color:#5B82FF;"></i> Your Details
+          <i class="fa-solid fa-user text-sm" style="color:#00A1EF;"></i> Your Details
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
@@ -497,13 +497,13 @@
       <!-- ── Step 2: Employment ── -->
       <div id="step-2" class="form-step hidden">
         <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-briefcase text-sm" style="color:#5B82FF;"></i> Employment Type
+          <i class="fa-solid fa-briefcase text-sm" style="color:#00A1EF;"></i> Employment Type
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="employment" value="payg" class="hidden">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,130,255,0.12);">
-              <i class="fa-solid fa-id-badge" style="color:#5B82FF;"></i>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-id-badge" style="color:#00A1EF;"></i>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">PAYG Employee</p>
@@ -512,8 +512,8 @@
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="employment" value="sole-trader" class="hidden">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,130,255,0.12);">
-              <i class="fa-solid fa-store" style="color:#5B82FF;"></i>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-store" style="color:#00A1EF;"></i>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Sole Trader / ABN</p>
@@ -522,8 +522,8 @@
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="employment" value="investor" class="hidden">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,130,255,0.12);">
-              <i class="fa-solid fa-chart-pie" style="color:#5B82FF;"></i>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-chart-pie" style="color:#00A1EF;"></i>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Investor</p>
@@ -532,8 +532,8 @@
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="employment" value="multiple" class="hidden">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,130,255,0.12);">
-              <i class="fa-solid fa-layer-group" style="color:#5B82FF;"></i>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-layer-group" style="color:#00A1EF;"></i>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Multiple / Complex</p>
@@ -554,27 +554,27 @@
       <!-- ── Step 3: Income ── -->
       <div id="step-3" class="form-step hidden">
         <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-dollar-sign text-sm" style="color:#5B82FF;"></i> Annual Income
+          <i class="fa-solid fa-dollar-sign text-sm" style="color:#00A1EF;"></i> Annual Income
         </h3>
         <div class="space-y-3">
           <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="income" value="under-40k" class="hidden">
-            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(91,130,255,0.5);"></div>
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);"></div>
             <p class="text-sm font-medium text-white">Under $40,000</p>
           </label>
           <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="income" value="40-80k" class="hidden">
-            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(91,130,255,0.5);"></div>
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);"></div>
             <p class="text-sm font-medium text-white">$40,000 – $80,000</p>
           </label>
           <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="income" value="80-150k" class="hidden">
-            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(91,130,255,0.5);"></div>
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);"></div>
             <p class="text-sm font-medium text-white">$80,000 – $150,000</p>
           </label>
           <label class="opt-card income-opt rounded-xl p-5 flex items-center gap-4">
             <input type="radio" name="income" value="150k-plus" class="hidden">
-            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(91,130,255,0.5);"></div>
+            <div class="radio-dot w-4 h-4 rounded-full flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);"></div>
             <p class="text-sm font-medium text-white">$150,000+</p>
           </label>
         </div>
@@ -591,7 +591,7 @@
       <!-- ── Step 4: Final ── -->
       <div id="step-4" class="form-step hidden">
         <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-map-marker-alt text-sm" style="color:#5B82FF;"></i> Final Details
+          <i class="fa-solid fa-map-marker-alt text-sm" style="color:#00A1EF;"></i> Final Details
         </h3>
         <div class="space-y-5">
           <div class="relative">
@@ -618,10 +618,10 @@
             </select>
             <i class="fa-solid fa-chevron-down text-xs text-white/40 absolute right-4 top-[42px] pointer-events-none"></i>
           </div>
-          <label class="rounded-xl p-4 flex items-start gap-3 cursor-pointer" style="background:rgba(91,130,255,0.06); border:1px solid rgba(91,130,255,0.2);">
-            <input id="lead-consent" type="checkbox" class="mt-0.5 flex-shrink-0" style="accent-color:#5B82FF;">
+          <label class="rounded-xl p-4 flex items-start gap-3 cursor-pointer" style="background:rgba(0,161,239,0.06); border:1px solid rgba(0,161,239,0.2);">
+            <input id="lead-consent" type="checkbox" class="mt-0.5 flex-shrink-0" style="accent-color:#00A1EF;">
             <p class="text-xs text-white/50 leading-relaxed">
-              I agree to the <a href="privacy.html" target="_blank" class="underline" style="color:#5B82FF;">Privacy Policy</a> and <a href="terms.html" target="_blank" class="underline" style="color:#5B82FF;">Terms of Service</a>, including my details being shared with the tax professional I'm matched with. Your data is encrypted and handled under the Australian Privacy Act 1988.
+              I agree to the <a href="privacy.html" target="_blank" class="underline" style="color:#00A1EF;">Privacy Policy</a> and <a href="terms.html" target="_blank" class="underline" style="color:#00A1EF;">Terms of Service</a>, including my details being shared with the tax professional I'm matched with. Your data is encrypted and handled under the Australian Privacy Act 1988.
             </p>
           </label>
           <p id="lead-error" class="hidden text-xs font-medium" style="color:#FF6B6B;"></p>
@@ -639,15 +639,15 @@
       <!-- ── Success ── -->
       <div id="step-success" class="form-step hidden text-center py-8">
         <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-             style="background:rgba(91,130,255,0.1); border:2px solid rgba(91,130,255,0.4);">
-          <i class="fa-solid fa-check text-3xl" style="color:#5B82FF;"></i>
+             style="background:rgba(0,161,239,0.1); border:2px solid rgba(0,161,239,0.4);">
+          <i class="fa-solid fa-check text-3xl" style="color:#00A1EF;"></i>
         </div>
         <h3 class="text-2xl font-extrabold text-white mb-3">You're all set.</h3>
         <p class="text-white/55 text-sm leading-relaxed mb-6 max-w-sm mx-auto">
           We've received your details and will match you with the ideal tax professional within the next <strong class="text-white">2 business hours</strong>. Check your inbox for confirmation.
         </p>
         <div class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full"
-             style="background:rgba(91,130,255,0.1); color:#5B82FF; border:1px solid rgba(91,130,255,0.25);">
+             style="background:rgba(0,161,239,0.1); color:#00A1EF; border:1px solid rgba(0,161,239,0.25);">
           <i class="fa-solid fa-envelope"></i> Confirmation email sent
         </div>
       </div>
@@ -664,7 +664,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="max-w-2xl mb-14 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#2F5DE3;">Why OneDeduction</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#0079B3;">Why OneDeduction</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink tracking-tight mb-4">Built to get you a bigger refund, not a bigger bill.</h2>
     </div>
 
@@ -672,7 +672,7 @@
 
       <div class="benefit-row grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-3 sm:gap-8 p-7 sm:p-8 reveal">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-hand-holding-dollar text-lg" style="color:#2F5DE3;"></i>
+          <i class="fa-solid fa-hand-holding-dollar text-lg" style="color:#0079B3;"></i>
           <h3 class="text-base font-bold text-ink">Always free</h3>
         </div>
         <p class="text-muted text-sm leading-relaxed">Our matching service costs nothing, ever. Your agent's fees are agreed directly with you — no surprises, no obligation.</p>
@@ -680,7 +680,7 @@
 
       <div class="benefit-row grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-3 sm:gap-8 p-7 sm:p-8 reveal d1">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-user-check text-lg" style="color:#2F5DE3;"></i>
+          <i class="fa-solid fa-user-check text-lg" style="color:#0079B3;"></i>
           <h3 class="text-base font-bold text-ink">Vetted, not just listed</h3>
         </div>
         <p class="text-muted text-sm leading-relaxed">Every agent holds a current ATO registration or CPA Australia membership, plus a verified client track record.</p>
@@ -688,7 +688,7 @@
 
       <div class="benefit-row grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-3 sm:gap-8 p-7 sm:p-8 reveal d2">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-arrow-trend-up text-lg" style="color:#2F5DE3;"></i>
+          <i class="fa-solid fa-arrow-trend-up text-lg" style="color:#0079B3;"></i>
           <h3 class="text-base font-bold text-ink">Higher average refunds</h3>
         </div>
         <p class="text-muted text-sm leading-relaxed">Matched clients average $3,850 back — 24% above the self-lodgment average — because a specialist catches what software doesn't.</p>
@@ -696,7 +696,7 @@
 
       <div class="benefit-row grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-3 sm:gap-8 p-7 sm:p-8 reveal d3">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-lock text-lg" style="color:#2F5DE3;"></i>
+          <i class="fa-solid fa-lock text-lg" style="color:#0079B3;"></i>
           <h3 class="text-base font-bold text-ink">Your data, protected</h3>
         </div>
         <p class="text-muted text-sm leading-relaxed">256-bit encryption, full Privacy Act compliance, and we never sell your data. It goes to your matched agent — nobody else.</p>
@@ -714,7 +714,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#2F5DE3;">The Difference</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#0079B3;">The Difference</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink tracking-tight mb-4">What matching actually saves you.</h2>
       <p class="text-muted text-lg">Same return. Very different outcome.</p>
     </div>
@@ -729,8 +729,8 @@
         <div class="p-5 sm:p-6 border-l border-line">
           <p class="text-sm font-semibold text-muted">Lodging it yourself</p>
         </div>
-        <div class="p-5 sm:p-6 border-l border-line" style="background:#E8EDFC;">
-          <p class="text-sm font-semibold" style="color:#2F5DE3;">Matched with OneDeduction</p>
+        <div class="p-5 sm:p-6 border-l border-line" style="background:#E6F6FD;">
+          <p class="text-sm font-semibold" style="color:#0079B3;">Matched with OneDeduction</p>
         </div>
       </div>
 
@@ -742,8 +742,8 @@
         <div class="p-5 sm:p-6 sm:border-l border-line">
           <p class="text-sm text-muted">Hours researching and filling in forms</p>
         </div>
-        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(232,237,252,0.4);">
-          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#2F5DE3;"></i>Under 2 minutes to get matched</p>
+        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(230,246,253,0.4);">
+          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#0079B3;"></i>Under 2 minutes to get matched</p>
         </div>
       </div>
 
@@ -754,8 +754,8 @@
         <div class="p-5 sm:p-6 sm:border-l border-line">
           <p class="text-sm text-muted">Whatever the software happens to prompt for</p>
         </div>
-        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(232,237,252,0.4);">
-          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#2F5DE3;"></i>Reviewed by a specialist in your industry</p>
+        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(230,246,253,0.4);">
+          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#0079B3;"></i>Reviewed by a specialist in your industry</p>
         </div>
       </div>
 
@@ -766,8 +766,8 @@
         <div class="p-5 sm:p-6 sm:border-l border-line">
           <p class="text-sm text-muted">You are, if something's wrong</p>
         </div>
-        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(232,237,252,0.4);">
-          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#2F5DE3;"></i>A registered agent, on the record</p>
+        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(230,246,253,0.4);">
+          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#0079B3;"></i>A registered agent, on the record</p>
         </div>
       </div>
 
@@ -778,8 +778,8 @@
         <div class="p-5 sm:p-6 sm:border-l border-line">
           <p class="text-sm text-muted">ATO self-lodgment average</p>
         </div>
-        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(232,237,252,0.4);">
-          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#2F5DE3;"></i>$3,850 average — 24% higher</p>
+        <div class="p-5 sm:p-6 border-t sm:border-t-0 sm:border-l border-line" style="background:rgba(230,246,253,0.4);">
+          <p class="text-sm text-ink/85"><i class="fa-solid fa-check text-xs mr-1.5" style="color:#0079B3;"></i>$3,850 average — 24% higher</p>
         </div>
       </div>
 
@@ -832,7 +832,7 @@
 
       <!-- Copy -->
       <div class="flex-1 text-white reveal d2">
-        <p class="text-xs font-semibold eyebrow uppercase mb-4" style="color:#5B82FF;">About OneDeduction</p>
+        <p class="text-xs font-semibold eyebrow uppercase mb-4" style="color:#00A1EF;">About OneDeduction</p>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
           Built for every working Australian.
         </h2>
@@ -844,19 +844,19 @@
 
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="flex items-start gap-3">
-            <i class="fa-solid fa-check text-xs mt-1" style="color:#5B82FF;"></i>
+            <i class="fa-solid fa-check text-xs mt-1" style="color:#00A1EF;"></i>
             <p class="text-sm text-white/70">ATO-registered network professionals</p>
           </div>
           <div class="flex items-start gap-3">
-            <i class="fa-solid fa-check text-xs mt-1" style="color:#5B82FF;"></i>
+            <i class="fa-solid fa-check text-xs mt-1" style="color:#00A1EF;"></i>
             <p class="text-sm text-white/70">Privacy Act compliant data handling</p>
           </div>
           <div class="flex items-start gap-3">
-            <i class="fa-solid fa-check text-xs mt-1" style="color:#5B82FF;"></i>
+            <i class="fa-solid fa-check text-xs mt-1" style="color:#00A1EF;"></i>
             <p class="text-sm text-white/70">100% free referral service</p>
           </div>
           <div class="flex items-start gap-3">
-            <i class="fa-solid fa-check text-xs mt-1" style="color:#5B82FF;"></i>
+            <i class="fa-solid fa-check text-xs mt-1" style="color:#00A1EF;"></i>
             <p class="text-sm text-white/70">Coverage across all states &amp; territories</p>
           </div>
         </div>
@@ -874,7 +874,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-12 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#2F5DE3;">Client Stories</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#0079B3;">Client Stories</p>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">Real Australians, real results.</h2>
     </div>
 
@@ -890,7 +890,7 @@
         </div>
         <p class="text-ink/75 text-sm leading-relaxed mb-6">"I never knew I could claim so much as a nurse. My matched agent found $4,200 in deductions I would've missed entirely. The whole thing took five minutes."</p>
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#2F5DE3;">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0079B3;">
             <span class="text-white text-sm font-bold">SM</span>
           </div>
           <div>
@@ -910,7 +910,7 @@
         </div>
         <p class="text-ink/75 text-sm leading-relaxed mb-6">"As a tradie, my tax situation is messy. I got matched with an agent who specialises in my industry — $5,600 back, the best return I've ever had."</p>
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#2F5DE3;">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0079B3;">
             <span class="text-white text-sm font-bold">JT</span>
           </div>
           <div>
@@ -930,7 +930,7 @@
         </div>
         <p class="text-ink/75 text-sm leading-relaxed mb-6">"I work from home and have investments — always a nightmare at tax time. My matched agent handled everything seamlessly and got a great result."</p>
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#2F5DE3;">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0079B3;">
             <span class="text-white text-sm font-bold">PL</span>
           </div>
           <div>
@@ -954,7 +954,7 @@
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-14 reveal">
-      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#2F5DE3;">Got Questions?</p>
+      <p class="text-xs font-semibold eyebrow uppercase mb-3" style="color:#0079B3;">Got Questions?</p>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">Frequently asked questions.</h2>
     </div>
 
@@ -1032,8 +1032,8 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative rounded-2xl p-10 lg:p-16 text-center overflow-hidden bg-ink reveal">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px"
-           style="background:linear-gradient(90deg,transparent,#5B82FF,transparent);" aria-hidden="true"></div>
-      <p class="text-xs font-semibold eyebrow uppercase mb-4" style="color:#5B82FF;">Ready When You Are</p>
+           style="background:linear-gradient(90deg,transparent,#00A1EF,transparent);" aria-hidden="true"></div>
+      <p class="text-xs font-semibold eyebrow uppercase mb-4" style="color:#00A1EF;">Ready When You Are</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5">Don't leave money on the table.</h2>
       <p class="text-white/60 text-lg mb-8 max-w-xl mx-auto">Join over 12,000 Australians who've already maximised their refund with OneDeduction. Free forever, takes 2 minutes.</p>
       <a href="#lead-form" class="inline-flex items-center gap-2.5 px-10 py-4 rounded-xl btn-cta-dark text-base">
@@ -1111,7 +1111,7 @@
      ╚══════════════════════════════════════════╝ -->
 <div id="mob-sticky-cta" class="sm:hidden fixed bottom-0 inset-x-0 z-40 p-3 mob-cta-hidden" style="background:#EDF0F5;">
   <a href="#lead-form" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-ink font-semibold text-sm shadow-soft-hover border border-line">
-    Get Matched Free <i class="fa-solid fa-arrow-right text-xs" style="color:#2F5DE3;"></i>
+    Get Matched Free <i class="fa-solid fa-arrow-right text-xs" style="color:#0079B3;"></i>
   </a>
 </div>
 
@@ -1169,7 +1169,7 @@
       const dot = document.getElementById('prog-step-' + i);
       if (!dot) continue;
       if (i <= n) {
-        dot.style.background = '#5B82FF';
+        dot.style.background = '#0079B3';
         dot.style.color = '#fff';
         dot.style.borderColor = 'transparent';
         dot.classList.remove('text-white/40');
@@ -1259,7 +1259,7 @@
       document.getElementById('step-success').classList.remove('hidden');
       for (let i = 1; i <= 4; i++) {
         const dot = document.getElementById('prog-step-' + i);
-        dot.style.background = '#5B82FF';
+        dot.style.background = '#0079B3';
         dot.style.color = '#fff';
         dot.style.borderColor = 'transparent';
       }
@@ -1290,7 +1290,7 @@
       });
       this.classList.add('selected');
       const dot = this.querySelector('.radio-dot');
-      if (dot) dot.style.background = '#5B82FF';
+      if (dot) dot.style.background = '#00A1EF';
       const r = this.querySelector('input[type="radio"]');
       if (r) r.checked = true;
     });
@@ -1315,7 +1315,7 @@
       if (!wasOpen) {
         body.classList.add('open');
         icon.classList.replace('fa-plus','fa-minus');
-        icon.style.color     = '#2F5DE3';
+        icon.style.color     = '#0079B3';
         icon.style.transform = 'rotate(45deg)';
       }
     });

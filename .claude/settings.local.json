@@ -21,7 +21,11 @@
       "Bash(timeout 25 npm install pngjs --no-save --silent)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(cd *)",
-      "Bash(file *.png *.ico *.svg)"
+      "Bash(file *.png *.ico *.svg)",
+      "Bash(sort -t: -k2)",
+      "Bash(uniq -c -f1)",
+      "Bash(awk -F: '{print $2}')",
+      "Bash(node --check /tmp/checkfinal.js)"
     ]
   }
 }
