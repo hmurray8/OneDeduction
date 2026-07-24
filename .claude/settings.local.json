@@ -35,7 +35,13 @@
       "Read(//home/hayden/.config/**)",
       "Bash(curl -s -o /dev/null -w 'OPTIONS preflight: %{http_code}\\\\n' -X OPTIONS -H 'Origin: https://onededuction.com' -H 'Access-Control-Request-Method: POST' https://yuaxcihtxqllnpvivyhd.supabase.co/functions/v1/submit-lead)",
       "Bash(curl -s -w '\\\\nHTTP %{http_code}\\\\n' -X POST -H 'Content-Type: application/json' -H 'Origin: https://onededuction.com' -d '{}' https://yuaxcihtxqllnpvivyhd.supabase.co/functions/v1/submit-lead)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Bash(git check-ignore *)",
+      "Bash(gh repo *)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)"
     ]
   }
 }
