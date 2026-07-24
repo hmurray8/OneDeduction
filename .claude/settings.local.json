@@ -25,7 +25,16 @@
       "Bash(sort -t: -k2)",
       "Bash(uniq -c -f1)",
       "Bash(awk -F: '{print $2}')",
-      "Bash(node --check /tmp/checkfinal.js)"
+      "Bash(node --check /tmp/checkfinal.js)",
+      "Bash(supabase --version)",
+      "Bash(git -C /mnt/c/Users/Hayden/Documents/GitHub/onededuction status)",
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npx *)",
+      "Read(//home/hayden/**)",
+      "Read(//home/hayden/.config/**)",
+      "Bash(curl -s -o /dev/null -w 'OPTIONS preflight: %{http_code}\\\\n' -X OPTIONS -H 'Origin: https://onededuction.com' -H 'Access-Control-Request-Method: POST' https://yuaxcihtxqllnpvivyhd.supabase.co/functions/v1/submit-lead)",
+      "Bash(curl -s -w '\\\\nHTTP %{http_code}\\\\n' -X POST -H 'Content-Type: application/json' -H 'Origin: https://onededuction.com' -d '{}' https://yuaxcihtxqllnpvivyhd.supabase.co/functions/v1/submit-lead)"
     ]
   }
 }
