@@ -16,7 +16,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 
 const ALLOWED_ORIGIN = Deno.env.get("ALLOWED_ORIGIN") ?? "https://onededuction.com";
 
-const EMPLOYMENT_TYPES = new Set(["payg", "sole-trader", "investor", "multiple"]);
+const INCOME_SOURCES = new Set(["payg", "sole-trader", "rental-property", "shares-investments", "crypto", "other"]);
 const INCOME_BRACKETS = new Set(["under-40k", "40-80k", "80-150k", "150k-plus"]);
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -65,7 +65,6 @@ Deno.serve(async (req) => {
     last_name: clean(body.lastName, 100),
     email: clean(body.email, 200).toLowerCase(),
     phone: clean(body.phone, 30),
-    employment_type: clean(body.employmentType, 30),
     income_bracket: clean(body.incomeBracket, 30),
     state: clean(body.state, 50),
     financial_year: clean(body.financialYear, 30),
@@ -80,9 +79,17 @@ Deno.serve(async (req) => {
   if (!EMAIL_RE.test(lead.email)) {
     return json(400, { error: "Invalid email address" });
   }
-  if (!EMPLOYMENT_TYPES.has(lead.employment_type)) {
-    return json(400, { error: "Invalid employment type" });
+
+  const incomeSources = Array.isArray(body.incomeSources)
+    ? [...new Set(body.incomeSources.map((v) => clean(v, 30)))].filter((v) => v !== "")
+    : [];
+  if (incomeSources.length === 0) {
+    return json(400, { error: "Select at least one income source" });
   }
+  if (!incomeSources.every((v) => INCOME_SOURCES.has(v))) {
+    return json(400, { error: "Invalid income source" });
+  }
+
   if (!INCOME_BRACKETS.has(lead.income_bracket)) {
     return json(400, { error: "Invalid income bracket" });
   }
@@ -95,7 +102,7 @@ Deno.serve(async (req) => {
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
 
-  const { error: insertError } = await supabase.from("leads").insert(lead);
+  const { error: insertError } = await supabase.from("leads").insert({ ...lead, income_sources: incomeSources });
   if (insertError) {
     console.error("insert failed", insertError);
     return json(500, { error: "Could not save your details. Please try again." });
@@ -119,7 +126,7 @@ Deno.serve(async (req) => {
             `Name: ${lead.first_name} ${lead.last_name}`,
             `Email: ${lead.email}`,
             `Phone: ${lead.phone}`,
-            `Employment: ${lead.employment_type}`,
+            `Income sources: ${incomeSources.join(", ")}`,
             `Income: ${lead.income_bracket}`,
             `State: ${lead.state}`,
             `Financial year: ${lead.financial_year}`,

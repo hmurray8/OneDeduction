@@ -101,8 +101,8 @@
 
     /* ── Numbered step ── */
     .step-num {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 3.25rem; font-weight: 600; line-height: 1;
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      font-size: 3.25rem; font-weight: 700; line-height: 1;
       color: #00A1EF;
     }
 
@@ -139,6 +139,11 @@
     }
     .opt-card:hover { border-color: rgba(0,161,239,0.5); }
     .opt-card.selected { border-color: #00A1EF; background: rgba(0,161,239,0.08); }
+
+    .chk-box { transition: background 0.2s, border-color 0.2s; }
+    .chk-box i { opacity: 0; transition: opacity 0.15s; }
+    .opt-card.selected .chk-box { background: #00A1EF; border-color: #00A1EF; }
+    .opt-card.selected .chk-box i { opacity: 1; }
 
     /* ── FAQ accordion ── */
     .faq-body {
@@ -501,50 +506,89 @@
         </button>
       </div>
 
-      <!-- ── Step 2: Employment ── -->
+      <!-- ── Step 2: Income Sources ── -->
       <div id="step-2" class="form-step hidden">
-        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-briefcase text-sm" style="color:#00A1EF;"></i> Employment Type
+        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-briefcase text-sm" style="color:#00A1EF;"></i> Income Sources
         </h3>
+        <p class="text-xs text-white/45 mb-6">Select everything that applies — most people have more than one.</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
-            <input type="radio" name="employment" value="payg" class="hidden">
+            <input type="checkbox" name="employment" value="payg" class="hidden">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
               <i class="fa-solid fa-id-badge" style="color:#00A1EF;"></i>
             </div>
             <div>
-              <p class="text-sm font-semibold text-white">PAYG Employee</p>
-              <p class="text-xs text-white/45 mt-0.5">Full-time, part-time, casual</p>
+              <p class="text-sm font-semibold text-white">Salary or Wages</p>
+              <p class="text-xs text-white/45 mt-0.5">PAYG income from an employer</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
             </div>
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
-            <input type="radio" name="employment" value="sole-trader" class="hidden">
+            <input type="checkbox" name="employment" value="sole-trader" class="hidden">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
               <i class="fa-solid fa-store" style="color:#00A1EF;"></i>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Sole Trader / ABN</p>
-              <p class="text-xs text-white/45 mt-0.5">Self-employed, contractor</p>
+              <p class="text-xs text-white/45 mt-0.5">Self-employed, freelance or contract work</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
             </div>
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
-            <input type="radio" name="employment" value="investor" class="hidden">
+            <input type="checkbox" name="employment" value="rental-property" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-house" style="color:#00A1EF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">Rental Property</p>
+              <p class="text-xs text-white/45 mt-0.5">Income from an investment property</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
+            </div>
+          </label>
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="checkbox" name="employment" value="shares-investments" class="hidden">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
               <i class="fa-solid fa-chart-pie" style="color:#00A1EF;"></i>
             </div>
             <div>
-              <p class="text-sm font-semibold text-white">Investor</p>
-              <p class="text-xs text-white/45 mt-0.5">Property, shares, crypto</p>
+              <p class="text-sm font-semibold text-white">Shares &amp; Managed Funds</p>
+              <p class="text-xs text-white/45 mt-0.5">Dividends, ETFs or managed investments</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
             </div>
           </label>
           <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
-            <input type="radio" name="employment" value="multiple" class="hidden">
+            <input type="checkbox" name="employment" value="crypto" class="hidden">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
+              <i class="fa-solid fa-coins" style="color:#00A1EF;"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">Cryptocurrency</p>
+              <p class="text-xs text-white/45 mt-0.5">Trading, staking or capital gains</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
+            </div>
+          </label>
+          <label class="opt-card employment-opt rounded-xl p-5 flex items-center gap-4">
+            <input type="checkbox" name="employment" value="other" class="hidden">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,161,239,0.12);">
               <i class="fa-solid fa-layer-group" style="color:#00A1EF;"></i>
             </div>
             <div>
-              <p class="text-sm font-semibold text-white">Multiple / Complex</p>
-              <p class="text-xs text-white/45 mt-0.5">Combined income sources</p>
+              <p class="text-sm font-semibold text-white">Something Else</p>
+              <p class="text-xs text-white/45 mt-0.5">Other income not listed here</p>
+            </div>
+            <div class="chk-box ml-auto w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0" style="border:2px solid rgba(0,161,239,0.5);">
+              <i class="fa-solid fa-check text-[10px]" style="color:#fff;"></i>
             </div>
           </label>
         </div>
@@ -1158,7 +1202,7 @@
     const lastName  = document.getElementById('lead-last-name').value.trim();
     const email     = document.getElementById('lead-email').value.trim();
     const phone     = document.getElementById('lead-phone').value.trim();
-    const employmentEl = document.querySelector('input[name="employment"]:checked');
+    const incomeSourceEls = document.querySelectorAll('input[name="employment"]:checked');
     const incomeEl     = document.querySelector('input[name="income"]:checked');
     const state         = document.getElementById('lead-state').value;
     const financialYear = document.getElementById('lead-financial-year').value;
@@ -1169,8 +1213,8 @@
       showLeadError('Please go back and fill in your name, email and phone number.');
       return goStep(1);
     }
-    if (!employmentEl) {
-      showLeadError('Please go back and select your employment type.');
+    if (incomeSourceEls.length === 0) {
+      showLeadError('Please go back and select at least one income source.');
       return goStep(2);
     }
     if (!incomeEl) {
@@ -1197,7 +1241,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName, lastName, email, phone,
-          employmentType: employmentEl.value,
+          incomeSources: Array.from(incomeSourceEls).map(el => el.value),
           incomeBracket: incomeEl.value,
           state, financialYear,
           consent: String(consent),
@@ -1225,13 +1269,10 @@
     }
   }
 
-  /* ── Option cards: employment ── */
-  document.querySelectorAll('.employment-opt').forEach(opt => {
-    opt.addEventListener('click', function () {
-      document.querySelectorAll('.employment-opt').forEach(o => o.classList.remove('selected'));
-      this.classList.add('selected');
-      const r = this.querySelector('input[type="radio"]');
-      if (r) r.checked = true;
+  /* ── Option cards: income sources (multi-select) ── */
+  document.querySelectorAll('.employment-opt input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', function () {
+      this.closest('.employment-opt').classList.toggle('selected', this.checked);
     });
   });
 
